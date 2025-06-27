@@ -1,0 +1,14 @@
+bin/
+obj/
+*.exe
+*.user
+*.pdb
+*.json
+.vs/
+*.suo
+*.cache
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.zip

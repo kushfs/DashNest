@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="PersonalDashboard.Views.TodoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#DED3C4">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Input Section -->
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBox x:Name="TaskInput" Width="400" Height="30" Background="#F4EBD3" Foreground="#555879" Margin="0 0 10 0"/>
+            <Button Content="Add Task" Click="AddTask_Click" Background="#98A1BC" Foreground="White"/>
+        </StackPanel>
+
+        <!-- Task List -->
+        <ListBox x:Name="TaskList" Grid.Row="1" Background="#F4EBD3" Foreground="#555879" Margin="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Checked="TaskCheckBox_Changed" Unchecked="TaskCheckBox_Changed" Margin="0 0 10 0"/>
+                        <TextBlock Text="{Binding Title}" 
+                                   TextDecorations="{Binding IsDone, Converter={StaticResource BoolToTextDecorationConverter}}"/>
+                        <Button Content="❌" Click="DeleteTask_Click" Tag="{Binding}" Background="Transparent" BorderBrush="{x:Null}" Margin="10 0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

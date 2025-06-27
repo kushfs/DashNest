@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="PersonalDashboard.Views.EventsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Background="#DED3C4">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Input Section -->
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBox x:Name="EventTitleBox"
+                     Width="200"
+                     Margin="0 0 10 0"
+                     Background="#F4EBD3"
+                     Foreground="Gray"
+                     Text="Event Title"
+                     GotFocus="ClearTitlePlaceholder"
+                     LostFocus="RestoreTitlePlaceholder"/>
+
+            <DatePicker x:Name="EventDatePicker"
+                        Width="200"
+                        Margin="0 0 10 0"
+                        SelectedDate="{x:Static sys:DateTime.Now}"/>
+
+            <Button Content="Add Event"
+                    Click="AddEvent_Click"
+                    Background="#98A1BC"
+                    Foreground="White"/>
+        </StackPanel>
+
+        <!-- Event List -->
+        <ListBox x:Name="EventList" Grid.Row="1" Background="#F4EBD3" Foreground="#555879">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="{Binding Title}" FontWeight="Bold" Margin="0 0 10 0"/>
+                        <TextBlock Text="{Binding Date, StringFormat='{}{0:dd MMM yyyy}'}"/>
+                        <Button Content="❌"
+                                Click="DeleteEvent_Click"
+                                Tag="{Binding}"
+                                Background="Transparent"
+                                BorderBrush="{x:Null}"
+                                Margin="10 0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

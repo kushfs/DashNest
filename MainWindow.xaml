@@ -1,0 +1,21 @@
+﻿<Window x:Class="PersonalDashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:PersonalDashboard.Views"
+        Title="Personal Dashboard" Height="500" Width="800" WindowStartupLocation="CenterScreen"
+        Background="#F4EBD3">
+
+    <Grid>
+        <!-- Sidebar -->
+        <Grid Width="150" Background="#555879" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+            <StackPanel Margin="10" VerticalAlignment="Center">
+                <Button Content="📝 Notes" Click="Notes_Click" Margin="0 10" Foreground="White" Background="#98A1BC"/>
+                <Button Content="✅ To-Do" Click="Todo_Click" Margin="0 10" Foreground="White" Background="#98A1BC"/>
+                <Button Content="📅 Events" Click="Events_Click" Margin="0 10" Foreground="White" Background="#98A1BC"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content Area -->
+        <ContentControl x:Name="MainContent" Margin="150,0,0,0"/>
+    </Grid>
+</Window>
